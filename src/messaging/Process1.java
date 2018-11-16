@@ -27,6 +27,8 @@ public class Process1 {
             e.printStackTrace();
         }
 
+        // This is my comment
+
         msgCenter.sendMessage(2, "localhost", "Message to process 2!");
     }
 }
