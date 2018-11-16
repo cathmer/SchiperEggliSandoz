@@ -19,16 +19,20 @@ public class Process1 {
             System.exit(1);
         }
 
-        MessageCenter msgCenter = new MessageCenter(1, 2);
+        MessageCenter msgCenter = new MessageCenter(1, 3);
 
         try {
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(5);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // This is my comment
+//        new Thread(() -> {
+            msgCenter.sendMessage(2, "localhost", "Message to process 2!", 10);
+//        }).start();
 
-        msgCenter.sendMessage(2, "localhost", "Message to process 2!");
+//        new Thread(() -> {
+            msgCenter.sendMessage(3, "localhost", "Message to process 3!", 0);
+//        }).start();
     }
 }
