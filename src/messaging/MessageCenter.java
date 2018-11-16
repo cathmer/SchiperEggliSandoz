@@ -25,7 +25,6 @@ public class MessageCenter {
     }
 
     public void sendMessage(int toProcessId, String receiver, String message, int delay) {
-        // TODO: Increment vectorClock
         vectorClock.set(processId - 1, vectorClock.get(processId - 1) + 1);
 
         Message msg = new Message(message, toProcessId, processId, new HashMap<>(buffer), new ArrayList<>(vectorClock));
@@ -40,7 +39,6 @@ public class MessageCenter {
 
     public synchronized void receiveMessage(Message message) {
         System.out.println("Receiving:\n" + message);
-        // TODO: Check if message can be delivered
         // If my clock > buffer clock for my process id.
         // If so, deliver. Else, store in MessageBuffer
         ArrayList<Integer> bufferClock = message.getBuffer().get(processId);

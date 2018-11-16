@@ -1,5 +1,6 @@
 package messaging;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Process2 {
@@ -17,8 +18,17 @@ public class Process2 {
             e.printStackTrace();
         }
 
-//        new Thread(() -> {
-//            msgCenter.sendMessage(2, "localhost", "Message to process 2!", 5);
-//        }).start();
+        Scanner scan = new Scanner(System.in);
+        try {
+            while (scan.hasNextLine()) {
+                int toProcess = scan.nextInt();
+//                String receiver = scan.next();
+//                String message = scan.next();
+                int delay = scan.nextInt();
+                msgCenter.sendMessage(toProcess, "localhost", "Message to " + toProcess, delay);
+            }
+        } finally {
+            scan.close();
+        }
     }
 }

@@ -24,17 +24,15 @@ public class SendMessage implements SendMessage_RMI {
     }
 
     public void sendMessage(String registryName, String receiver, Message message, int delay) {
-//        new Thread(() -> {
-            // Sends a message using the remote method of another host
-            try {
-                String name = registryName;
-                Registry remoteReg = LocateRegistry.getRegistry(receiver);
-                SendMessage_RMI sendMsg = (SendMessage_RMI) remoteReg.lookup(name);
-                sendMsg.sendMessage(message, delay);
-            } catch (Exception e) {
-                System.err.println("Sending message exception:");
-                e.printStackTrace();
-            }
-//        }).start();
+        // Sends a message using the remote method of another host
+        try {
+            String name = registryName;
+            Registry remoteReg = LocateRegistry.getRegistry(receiver);
+            SendMessage_RMI sendMsg = (SendMessage_RMI) remoteReg.lookup(name);
+            sendMsg.sendMessage(message, delay);
+        } catch (Exception e) {
+            System.err.println("Sending message exception:");
+            e.printStackTrace();
+        }
     }
 }
