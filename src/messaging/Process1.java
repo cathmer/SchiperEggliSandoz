@@ -30,18 +30,16 @@ public class Process1 {
 
         Scanner scan = new Scanner(System.in);
         try {
+            int msgCounter = 0;
             while (scan.hasNextLine()) {
+                msgCounter++;
                 int toProcess = scan.nextInt();
 //                String receiver = scan.next();
-//                String message = scan.next();
                 int delay = scan.nextInt();
-                msgCenter.sendMessage(toProcess, "localhost", "Message to " + toProcess, delay);
+                msgCenter.sendMessage(toProcess, "localhost", "Message number " + msgCounter, delay);
             }
         } finally {
             scan.close();
         }
-
-//        msgCenter.sendMessage(2, "localhost", "Message to process 2!", 10);
-//        msgCenter.sendMessage(3, "localhost", "Message to process 3!", 0);
     }
 }

@@ -5,15 +5,28 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class holds all the variables that are sent with a message. Including the actual message (a string), the processId
+ * of the process the message is sent to, the processId of the process that sent the message, the buffer sent by the sender
+ * and the timestamp sent by the sender.
+ */
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
     private String msg;
     private int toProcessId;
     private int fromProcessId;
-    private HashMap<Integer, ArrayList<Integer>> buffer = new HashMap<>();
-    private ArrayList<Integer> timestamp = new ArrayList<>();
+    private HashMap<Integer, ArrayList<Integer>> buffer;
+    private ArrayList<Integer> timestamp;
 
+    /**
+     * Constructs a message.
+     * @param msg : a string specifying the message.
+     * @param toProcessId : the id of the process to send to.
+     * @param fromProcessId : the id of the process that sent the message.
+     * @param buffer : the buffer sent by the sender.
+     * @param timestamp : the timestamp sent by the sender.
+     */
     public Message(String msg, int toProcessId, int fromProcessId, HashMap<Integer, ArrayList<Integer>> buffer,
                    ArrayList<Integer> timestamp) {
         this.msg = msg;
@@ -23,11 +36,7 @@ public class Message implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public String getMessage() { return this.msg; }
-
     public int getToProcessId() { return toProcessId; }
-
-    public int getFromProcessId() { return fromProcessId; }
 
     public HashMap<Integer, ArrayList<Integer>> getBuffer() { return buffer; }
 

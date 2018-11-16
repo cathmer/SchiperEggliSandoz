@@ -1,12 +1,19 @@
 package messaging;
 
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+/**
+ * This class starts the registry for a process with a registry name and the SendMessage object.
+ */
 public class StartRegistry {
 
+    /**
+     * Method to start the registry.
+     * @param registryName : the name of the registry.
+     * @param sendMsg : the SendMessage object which can be invoked by a different process.
+     */
     public void startRegistry(String registryName, SendMessage sendMsg) {
         // Initiate registry
         try {
