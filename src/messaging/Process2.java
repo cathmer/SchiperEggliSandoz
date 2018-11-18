@@ -18,18 +18,6 @@ public class Process2 {
             e.printStackTrace();
         }
 
-        Scanner scan = new Scanner(System.in);
-        try {
-            int msgCounter = 0;
-            while (scan.hasNextLine()) {
-                msgCounter++;
-                int toProcess = scan.nextInt();
-//                String receiver = scan.next();
-                int delay = scan.nextInt();
-                msgCenter.sendMessage(toProcess, "localhost", "Message number " + msgCounter, delay);
-            }
-        } finally {
-            scan.close();
-        }
+        new MessageSender(msgCenter).startSender();
     }
 }
